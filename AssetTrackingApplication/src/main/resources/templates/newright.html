@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Add new right</title>
+<link th:href="@{/CSS/style.css}" rel="stylesheet" />
+<link th:href="@{/CSS/formStyle.css}" rel="stylesheet" />
+</head>
+<body>
+
+
+	<div class="form-style">
+	<h1>Add New Right<span></span></h1>
+		<form th:action="@{/newright}" th:object="${right}" method="post">
+			<div class="section"><span>NEW</span></div>
+			<div class="inner-wrap">
+			<p>
+				<label for="rightdesc">Right Description: </label>
+				<input id="rightdesc"  type="text" th:field="*{right_description}" />
+				<span id="rdesc" class="Warning" th:if="${#fields.hasErrors('right_description')}" th:errors="*{right_description}"></span>				
+			</p>			
+			<p>
+				<label for="rightcode">Right Code: </label>
+				<input id="rightcode"  type="text" th:field="*{right_code}" />
+				<span id="rcode" class="Warning" th:if="${#fields.hasErrors('right_code')}" th:errors="*{right_code}"></span>				
+			</p>	
+			<div class="button-section">
+			<input type="submit" value="Save" />
+			<hr>
+			<div style="text-align:right;"> 
+			<span><a class="cancel-button" th:href="@{/allrights}">CANCEL</a></span>
+			</div>
+			</div>
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>

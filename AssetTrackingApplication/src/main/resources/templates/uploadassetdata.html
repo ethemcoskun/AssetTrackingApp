@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Add new asset</title>
+<link th:href="@{/CSS/style.css}" rel="stylesheet" />
+<link th:href="@{/CSS/formStyle.css}" rel="stylesheet" />
+<script type="text/javascript" th:src="@{/JS/functions.js}"></script>
+</head>
+<body>
+
+
+	<div class="form-style">
+		<h1>UPLOAD MULTIPLE ASSETS</h1>
+		<form th:action="@{/uploadExcelFile}" enctype="multipart/form-data"
+			method="post">
+			<div class="section">			
+			<span>UPLOAD FILE</span>
+			</div>
+			<p>&zwnj;</p>
+			<div class="inner-wrap">
+				<div style="font-size: 30px;">
+					<label for="file">Select Excel File: </label>					
+					<input id="file" size="60" type="file" name="file" accept=".xls,.xlsx" onclick="enableButton('submitb')"/> 
+					<hr>					 
+				<div>
+                  <label>Select a Site:</label>               
+				         <div class="textboxarea">        	
+			                 <select name="this_site" id="allSites">
+				                <option th:each="site : ${sitesMap}" th:value="${site.key}" th:text="${site.value}"></option>
+				             </select>	  
+			             </div>  	               
+               </div>	
+               <div>
+	               <label>Select Category:</label>	         
+			               <div class="textboxarea">        	
+				                 <select name="this_category" id="allCategories">
+					                <option th:each="category : ${categoriesMap}" th:value="${category.key}" th:text="${category.value}"></option>
+					             </select>	  
+				             </div>  
+	              </div>						
+				<hr>	
+					<input id="submitb" onclick="checkFile('file', 'submitb')" type="submit" value="Upload" disabled/>
+ 					 
+				</div>
+	
+			</div>
+		</form> 
+
+	</div>
+
+</body>
+</html>

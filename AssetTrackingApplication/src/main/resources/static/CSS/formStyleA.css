@@ -1,0 +1,99 @@
+@charset "ISO-8859-1";
+.form-style-A{ 
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;	
+	width:450px;
+	padding:30px;
+	margin:40px auto;
+	background: #FFF;
+	border-radius: 10px;
+	-webkit-border-radius:10px;
+	-moz-border-radius: 10px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+	-moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+	-webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+}
+.form-style-A label{
+	display:block;
+	margin-bottom: 10px;
+}
+.form-style-A label > span{ 
+	width: 100px;
+	color: #007bb7;
+	font-weight: bold;
+	font-size: 13px;
+	text-shadow: 1px 1px 1px #fff;
+}
+.form-style-A fieldset{
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	margin: 0px 0px 10px 0px;
+	border: 1px solid #004080;
+	padding: 20px;
+	background: #FFF4F4;
+	box-shadow: inset 0px 0px 15px #006799;
+	-moz-box-shadow: inset 0px 0px 15px #006799;
+	-webkit-box-shadow: inset 0px 0px 15px #006799;
+}
+.form-style-A fieldset legend{
+	color: #0080c0;
+	border-top: 1px solid #0080c0;
+	border-left: 1px solid #0080c0;
+	border-right: 1px solid #0080c0;
+	border-radius: 5px 5px 0px 0px;
+	-webkit-border-radius: 5px 5px 0px 0px;
+	-moz-border-radius: 5px 5px 0px 0px;
+	background: #c1ebff;
+	padding: 0px 8px 3px 8px;
+	box-shadow: -0px -1px 2px #F1F1F1;
+	-moz-box-shadow:-0px -1px 2px #F1F1F1;
+	-webkit-box-shadow:-0px -1px 2px #F1F1F1;
+	font-weight: normal;
+	font-size: 12px;
+}
+.form-style-A textarea{
+	width:250px;
+	height:100px;
+}
+.form-style-A input[type=text],
+.form-style-A input[type=date],
+.form-style-A input[type=datetime],
+.form-style-A input[type=number],
+.form-style-A input[type=search],
+.form-style-A input[type=time],
+.form-style-A input[type=url],
+.form-style-A input[type=email],
+.form-style-A select, 
+.form-style-A textarea{
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border: 1px solid #0080c0;
+	outline: none;
+	color: #006799;
+	padding: 5px 8px 5px 8px;
+	box-shadow: inset 1px 1px 4px #006799;
+	-moz-box-shadow: inset 1px 1px 4px #006799;
+	-webkit-box-shadow: inset 1px 1px 4px #006799;
+	background: #82bcec;
+	width:50%;
+}
+.form-style-A  input[type=submit],
+.form-style-A  input[type=button]{
+	background: #177cd7;
+	border: 1px solid #0080c0;
+	padding: 5px 15px 5px 15px;
+	color: #00a5f4;
+	box-shadow: inset -1px -1px 3px #1468b4;
+	-moz-box-shadow: inset -1px -1px 3px #1468b4;
+	-webkit-box-shadow: inset -1px -1px 3px #1468b4;
+	border-radius: 3px;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;	
+	font-weight: bold;
+}
+.required{
+	color:red;
+	font-weight:normal;
+}

@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Add new site</title>
+<link th:href="@{/CSS/style.css}" rel="stylesheet" />
+<link th:href="@{/CSS/formStyle.css}" rel="stylesheet" />
+</head>
+<body>
+
+
+	<div class="form-style">	
+	<h1>Add New Site<span></span></h1>	
+		<form th:action="@{/newsite}" th:object="${new_site}" method="post">
+			<div class="section"><span>NEW</span> </div>
+			<div class="inner-wrap">
+			<p>
+				<label for="st_name">Site Name: </label>
+				<input id="st_name"  type="text" th:field="*{site_name}" /><span id="stname" class="Warning"></span>				
+			</p>
+			<p>
+				<label for="st_add">Site Address: </label>
+				<input id="st_add"  type="text" th:field="*{site_address}" /><span id="stadd" class="Warning"></span>				
+			</p>
+			<p>
+				<label for="st_phone">Site Phone: </label>
+				<input id="st_phone"  type="text" th:field="*{site_phone}" /><span id="stphone" class="Warning"></span>				
+			</p>
+			<p>
+				<label for="st_notes">Site Notes: </label><br>
+				<textarea id="st_notes" rows="10" cols="100" th:field="*{site_notes}" ></textarea><span id="stnotes" class="Warning"></span>				
+			</p>
+			<div class="button-section">
+				<input type="submit" value="Save" />
+							<hr>
+			<div style="text-align:right;"> 
+			<span><a class="cancel-button" th:href="@{/allsites}">CANCEL</a></span>
+			</div>
+			</div>
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>

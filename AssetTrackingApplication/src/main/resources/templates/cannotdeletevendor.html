@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Vendors</title>
+<link th:href="@{/CSS/style.css}" rel="stylesheet" />
+<link th:href="@{/CSS/main.css}" rel="stylesheet" />
+</head>
+<body>
+
+<div class="container">
+	<div class="menu" tabindex="1">
+		<div class="list">
+			<span><a href="/allsites" class="button2">SITES</a></span>
+			<span><a href="/assets" class="button2">ASSETS</a></span>
+			<span><a href="/locations" class="button2">LOCATIONS</a></span>
+			<span><a href="/allcategories" class="button2">CATEGORIES</a></span>
+			<span><a href="/allvendors" class="button2">VENDORS</a></span>
+		</div>
+		<div class="intro">
+			<div class="btn"></div>
+
+	<div th:with="name=${this_vendor.vendor_name}">
+		<h1 >VENDOR <span th:text="${name}"></span></h1>
+		<div style="text-align: left;font-size: 25px;">		
+		 <div>
+		 <p>Vendor <span th:text="${name}"></span> is bound to some assets! There for, it cannot be deleted!</p> 
+		 </div>
+		 <ul >
+		 <li>Vendor description: <span th:text="${this_vendor.vendor_description}"></span></li>
+		 <li>Vendor website: <span th:text="${this_vendor.vendor_website}"></span></li>
+		 <li>Vendor address: <span th:text="${this_vendor.vendor_address}"></span></li>
+		 </ul>
+		</div>
+		<p>
+		<a href="/allvendors" class="button1">GO BACK</a>
+		</p>
+	</div>
+
+
+
+		</div>
+	</div>	
+</div>
+
+
+
+</body>
+</html>

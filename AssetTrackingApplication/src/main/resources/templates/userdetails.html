@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>User Details</title> 
+<link th:href="@{/CSS/style.css}" rel="stylesheet" />
+<link th:href="@{/CSS/formStyle.css}" rel="stylesheet" />
+</head>
+<body>
+ 
+		 
+		 
+	<div class="form-style">
+		
+		<th:block th:each="user : ${user_info}">		
+		<fieldset th:with="name=${user.username}"><h1 th:text="|USER: ${name}|"></h1>
+		<div class="inner-wrap">
+		
+		<div style="width: 100%; overflow: hidden; font-size: 20px;">
+		
+		<div style="width: 122px; float: left;">
+		<ul>
+		<li><span class="highlight">Username: </span></li>
+		<li><span class="highlight">First Name: </span></li>
+		<li><span class="highlight">Last Name: </span></li>
+		<li><span class="highlight">Email: </span></li>
+		<li><span class="highlight">Title: </span></li>
+		<li><span class="highlight">Last login: </span></li>
+		<li><span class="highlight">User Role: </span></li>		
+		</ul>
+		</div>
+		<div style="margin-left: 125px;" class="rightlist">
+		<ul>
+		<li><span class="toright" th:text="|&zwnj;${user.username}|"></span></li>
+		<li><span class="toright" th:text="|&zwnj;${user.firstname}|"></span></li>
+		<li><span class="toright" th:text="|&zwnj;${user.lastname}|"></span></li>
+		<li><span class="toright" th:text="|&zwnj;${user.email}|"></span></li>
+		<li><span class="toright" th:text="|&zwnj;${user.title}|"></span></li>
+		<li><span class="toright" style="font-size: 14px; font-weight: bold;" th:text="|&zwnj;${user.lastlogin}|"  ></span></li>
+		<li><span class="toright" th:with="role=${role}" th:text="|&zwnj;${role.rolename}|"></span></li>
+        </ul>	 
+        </div>
+        </div>
+        
+		</div> 
+		<div style="text-align:right;"> 
+		<span><a class="button1" th:href="@{/allusers}">GO BACK</a></span>
+		</div>
+		</fieldset>	
+
+		<th:block> 	
+		
+		 
+		 
+		 
+	</div>	
+ 
+
+
+
+</body>
+</html>

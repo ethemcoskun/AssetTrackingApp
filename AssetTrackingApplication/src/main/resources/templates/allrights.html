@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Rights</title>
+<link th:href="@{/CSS/style.css}" rel="stylesheet" />
+<link th:href="@{/CSS/main.css}" rel="stylesheet" />
+</head>
+<body>
+
+<div class="container">
+	<div class="menu" tabindex="1">
+		<div class="list">
+			<span><a href="/allsites" class="button2">SITES</a></span>
+			<span><a href="/assets" class="button2">ASSETS</a></span>
+			<span><a href="/locations" class="button2">LOCATIONS</a></span>
+			<span><a href="/allcategories" class="button2">CATEGORIES</a></span>
+			<span><a href="/allvendors" class="button2">VENDORS</a></span>
+		</div>
+		<div class="intro">
+			<div class="btn"></div>
+
+	<div class="center">
+		<h1>ROLE RIGHTS</h1>
+		<div class="inner-wrap">		
+		<table id="tbl" class="tableitems">
+		<thead>
+			<tr>
+				<th>Right Description</th> 
+				<th>Right Code</th> 
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<th:block th:each="right : ${all_right_info}">
+				<tr>
+<!-- 					<td><a th:text="${vendor.vendor_name}" th:href="@{/vendordetails/{vendor_id}(vendor_id=${vendor.vendor_id})}" ></a></td> -->
+					<td th:text="${right.right_description}"></td> 
+					<td th:text="${right.right_code}"></td>
+					<td><a class="button1" th:href="@{/deleteright/(rightid=${right.rightid})}" >Delete</a></td>					
+				</tr>
+			</th:block>
+		</tbody>
+		</table>
+
+		</div>
+		<p>
+		<a th:href="@{/newright}" class="button1">ADD NEW RIGHT</a>
+		</p>
+	</div>
+
+
+
+		</div>
+	</div>	
+</div>
+
+
+
+</body>
+</html>

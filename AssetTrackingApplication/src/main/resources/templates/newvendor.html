@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Add new vendor</title>
+<link th:href="@{/CSS/style.css}" rel="stylesheet" />
+<link th:href="@{/CSS/formStyle.css}" rel="stylesheet" />
+</head>
+<body>
+
+
+	<div class="form-style">
+	<h1>Add New Vendor<span></span></h1>
+		<form th:action="@{/newvendor}" th:object="${new_vendor}" method="post">
+			<div class="section"><span>NEW</span></div>
+			<div class="inner-wrap">
+			<p>
+				<label for="vend_name">Vendor Name: </label>
+				<input id="vend_name"  type="text" th:field="*{vendor_name}" />
+				<span id="vendname" class="Warning" th:if="${#fields.hasErrors('vendor_name')}" th:errors="*{vendor_name}"></span>				
+			</p>
+			<p>
+				<label for="vend_desc">Vendor Description: </label>
+				<input id="vend_desc"  type="text" th:field="*{vendor_description}" /><span id="venddesc" class="Warning"></span>				
+			</p>
+			<p>
+				<label for="vend_web">Vendor Website: </label>
+				<input id="vend_web"  type="text" th:field="*{vendor_website}" /><span id="vendweb" class="Warning"></span>				
+			</p>
+			<p>
+				<label for="vend_adr">Vendor Adress: </label>
+				<input id="vend_adr"  type="text" th:field="*{vendor_address}" /><span id="vendadr" class="Warning"></span>				
+			</p>
+			
+			<div class="button-section">
+			<input type="submit" value="Save" />
+			<hr>
+			<div style="text-align:right;"> 
+			<span><a class="cancel-button" th:href="@{/allvendors}">CANCEL</a></span>
+			</div>
+			</div>
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>

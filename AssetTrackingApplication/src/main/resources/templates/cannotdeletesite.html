@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Vendors</title>
+<link th:href="@{/CSS/style.css}" rel="stylesheet" />
+<link th:href="@{/CSS/main.css}" rel="stylesheet" />
+</head>
+<body>
+
+<div class="container">
+	<div class="menu" tabindex="1">
+		<div class="list">
+			<span><a href="/allsites" class="button2">SITES</a></span>
+			<span><a href="/assets" class="button2">ASSETS</a></span>
+			<span><a href="/locations" class="button2">LOCATIONS</a></span>
+			<span><a href="/allcategories" class="button2">CATEGORIES</a></span>
+			<span><a href="/allvendors" class="button2">VENDORS</a></span>
+		</div>
+		<div class="intro">
+			<div class="btn"></div>
+
+	<div th:with="name=${this_site.site_name}">
+		<h1><span th:text="${name}"> SITE</span></h1>
+		<div style="text-align: left;font-size: 25px;">		
+		 <div>
+		 <p><span th:text="${name}"></span> Site is bound to some assets! There for, it cannot be deleted!</p> 
+		 </div>
+		 <div class="numberlist">
+		 <ul>		  
+		 <li>Site address: <span th:text="${this_site.site_address}"></span></li>
+		 <li>Site phone: <span th:text="${this_site.site_phone}"></span></li>
+		 </ul>
+		 </div>
+		</div>
+		<p>
+		<a href="/allsites" class="button1">GO BACK</a>
+		</p>
+ 
+	</div>
+
+
+
+		</div>
+	</div>	
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Add new asset</title>
+<link th:href="@{/CSS/style.css}" rel="stylesheet" />
+<link th:href="@{/CSS/formStyle.css}" rel="stylesheet" />
+</head>
+<body>
+
+
+	<div class="form-style">	
+		<h1>ADD NEW ASSET<span></span></h1>
+		<form action="#" th:action="@{/addnewasset}" th:object="${asset}" method="post">
+			<div class="section"><span>NEW</span> </div>
+			<div class="inner-wrap">
+			<div>
+				<label for="a_name">Asset Name: </label>				
+				<input id="asset_name"  type="text" th:field="*{asset_name}" />
+				<label th:if="${#fields.hasErrors('asset_name')}" th:errors="*{asset_name}" th:class="'Warning'">asset errors</label>
+			</div>
+			<div>
+				<label for="a_desc">Asset Description: </label>
+				<input id="a_desc"  type="text" th:field="*{asset_description}" /><span id="adesc" class="Warning"></span>				
+			</div>
+			<div>
+				<label for="a_tag">Asset Tag: </label>
+				<input id="a_tag"  type="text" th:field="*{asset_tag}" /><span id="atag" class="Warning"></span>				
+			</div>
+			<div>
+				<label for="a_ponum">PO Number: </label>
+				<input id="a_ponum" type="text" th:field="*{po_number}" /><span id="aponum" class="Warning"></span>				
+			</div>
+			<div>
+				<label for="a_quant">Quantity: </label>
+				<input id="a_quant"  type="text" th:field="*{quantity}" /><span id="aquant" class="Warning"></span>				
+			</div>
+			<div>
+				<label for="a_pdate">Purchase Date: </label>
+				<input id="a_pdate"  type="date" th:field="*{purchase_date}" /><span id="apdate" class="Warning"></span>				
+			</div>
+			<div>
+				<label for="a_cost">Purchase Cost: </label>
+				<input id="a_cost"  type="text" th:field="*{purchase_cost}" /><span id="acost" class="Warning"></span>				
+			</div>
+			<div>
+				<label for="a_salval">Salvage Value: </label>
+				<input id="a_salval"  type="text" th:field="*{salvage_value}" /><span id="asalval" class="Warning"></span>				
+			</div>
+			<div>
+				<label for="a_lost">Is this asset lost: </label>
+				<select th:field="*{is_lost}">
+				<option th:value="0" th:text="NO"></option>
+				<option th:value="1" th:text="YES"></option>
+				</select> 
+			</div>
+			<div>
+				<label for="a_broken">Is this asset broken: </label>
+				<select th:field="*{is_broken}">
+				<option th:value="0" th:text="NO"></option>
+				<option th:value="1" th:text="YES"></option>
+				</select> 
+			</div>
+			<div>
+				<label for="a_vendor">Vendor: </label>				
+				<select th:field="*{vendor_id}">
+			    <option th:each="vendor : ${vendorsMap}" th:value="${vendor.key}" th:text="${vendor.value}"></option>
+			    </select>			
+			</div>
+			<div>
+				<label for="a_cate">Category: </label>
+				<select th:field="*{category_id}">
+			    <option th:each="category : ${categoriesMap}" th:value="${category.key}" th:text="${category.value}"></option>
+			    </select>			
+			</div>
+			<div>
+				<label for="a_site">Site: </label>
+				<select th:field="*{location_site_id}">
+			    <option th:each="site : ${sitesMap}" th:value="${site.key}" th:text="${site.value}"></option>
+			    </select>
+			</div>	
+			<div>
+				<label for="a_loc">Location: </label>
+				<select th:field="*{location_id}">
+			    <option th:each="location : ${all_locationsMap}" th:value="${location.key}" th:text="${location.value}"></option>
+			    </select>			
+			</div> 			
+			<div class="button-section">
+				<input type="submit" value="Save" />
+			</div>
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>

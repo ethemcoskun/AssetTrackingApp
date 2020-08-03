@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Categories</title>
+<link th:href="@{/CSS/style.css}" rel="stylesheet" />
+<link th:href="@{/CSS/formStyle.css}" rel="stylesheet" />
+</head>
+<body>
+
+
+	<div class="form-style">
+		<h1><span>Add New Category:</span></h1>		
+		<form th:action="@{/newcategory}" th:object="${cat}" method="post">		
+			<div class="section"><span>New</span> </div>
+			<div class="inner-wrap">
+			 
+				<label for="cat_name">Category Name: </label>
+				<input id="cat_name"  type="text" th:field="*{category_name}" />
+				<span id="catname" class="Warning" th:if="${#fields.hasErrors('category_name')}" th:errors="*{category_name}" ></span>
+				
+<!-- <div th:switch="${#fields.hasErrors('category_name')}"> -->
+<!--     <span th:case="false">NO </span> -->
+<!--     <span th:case="true" >yes</span> -->
+<!-- </div> -->
+<!-- 			<div th:classappend="${#fields.hasErrors('category_name')}? 'has-error':''"> -->
+<!-- 						<label for="cat_name" >Category Name</label>  -->
+<!-- 						<input id="email" class="form-control" th:field="*{category_name}" /> -->
+<!-- 						<p class="error-message" th:each="error : ${#fields.errors('category_name')}" th:text="${error}">Validation	error</p> -->
+<!-- 			</div> -->
+		
+			<p>
+				<label for="dep">Depreciation Years: </label>
+				<input id="dep"  type="text" th:field="*{depreciation_years}" />
+				<span id="depr" class="Warning" th:if="${#fields.hasErrors('depreciation_years')}" th:errors="*{depreciation_years}"></span>				
+			</p>
+			<div class="button-section">
+				<input type="submit" value="Save" />
+			</div>
+			<hr>
+			<div style="text-align:right;"> 
+			<span><a class="cancel-button" th:href="@{/allcategories}">CANCEL</a></span>
+			</div>
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>

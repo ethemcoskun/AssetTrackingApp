@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Locations</title>
+<link th:href="@{/CSS/style.css}" rel="stylesheet" />
+<link th:href="@{/CSS/main.css}" rel="stylesheet" />
+</head>
+<body>
+
+<div class="container">
+	<div class="menu" tabindex="1">
+		<div class="list">
+			<span><a href="/allsites" class="button2">SITES</a></span>
+			<span><a href="/assets" class="button2">ASSETS</a></span>
+			<span><a href="/locations" class="button2">LOCATIONS</a></span>
+			<span><a href="/allcategories" class="button2">CATEGORIES</a></span>
+			<span><a href="/allvendors" class="button2">VENDORS</a></span>
+		</div>
+		<div class="intro">
+			<div class="btn"></div>
+			
+	<div class="center" style="width:70%;">
+		<h1 th:with="name=${this_category.category_name}">
+			ASSETS IN <span th:text="${name}"></span> CATEGORY:
+		</h1>
+		<div class="inner-wrap">
+			<table class="tableitems" style="width:1000px;">
+				<thead>
+					<tr>
+						<th>Asset Name</th>
+						<th>Asset Description</th>
+						<th>Asset Tag</th>
+						<th>PO Number</th>
+						<th>Quantity</th>
+						<th>Purchase Date</th>
+						<th>Purchase Cost</th>
+						<th>RecordDate</th>
+						<th>Salvage Value</th>
+						<th>Is Broken</th>
+						<th>Is Lost</th>
+						<th>Vendor</th>
+						<th>Location</th>
+						<th class="absorbing-column">Site</th>
+<!-- 						<th></th> -->
+					</tr>
+				</thead>
+				<tbody>
+					<th:block th:each="asset : ${cassets}">
+						<tr>
+							<td th:text="${asset.asset_name}"></td>
+							<td th:text="${asset.asset_description}"></td>
+							<td style="font-size: 16px;white-space:nowrap;" th:text="${asset.asset_tag}"></td>
+							<td th:text="${asset.po_number}"></td>
+							<td th:text="${asset.quantity}"></td>
+							<td style="font-size: 16px;white-space:nowrap;" th:text="${asset.purchase_date}"></td>
+							<td th:text="${asset.purchase_cost}"></td>
+							<td style="font-size: 16px;white-space:nowrap;" th:text="${asset.record_date}"></td>
+							<td th:text="${asset.salvage_value}"></td>
+							<td th:text="${asset.is_broken} ? 'YES' : 'NO'"></td>
+							<td th:text="${asset.is_lost} ? 'YES' : 'NO'"></td>
+							<td th:text="${vendors.get(asset.vendor_id)}"></td>
+							<td><a th:href="@{/locationassets/(location_id=${asset.location_id})}" ><span th:text="${locations.get(asset.location_id)}"></span></a></td>
+							<td th:text="${sites.get(asset.location_site_id)}"></td>
+<!-- 							<td><a class="button1" th:href="@{/deleteasset/(asset_id=${asset.asset_id})}">Delete</a></td> -->
+						</tr>
+					</th:block>
+				</tbody>
+			</table>
+
+		</div>
+		<p>
+<!-- 			<a class="button1" th:href="@{/newasset/(site_id=${this_site.site_id})}">ADD NEW ASSET</a> -->
+<!-- 			<a class="button1" th:href="@{/newasset/{site_id}(site_id=${this_site.site_id})}">ADD NEW ASSET</a> -->
+		</p>
+	</div>
+
+		</div>
+	</div>	
+</div>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration</title>
+<link th:href="@{/CSS/style.css}" rel="stylesheet" />
+<link th:href="@{/CSS/formStyle.css}" rel="stylesheet" />
+</head>
+<body>
+	<div th:if="${param.success}">
+		<div class="Warning">You have successfully registered!</div>
+	</div>
+
+
+	<div class="form-style">
+	<h1>New User<span></span></h1>
+		<form th:action="@{/newuser}" th:object="${user}" method="post">
+			<div class="section"><span>NEW</span></div>
+			<div class="inner-wrap">
+			<p>
+				<label for="user_name">Username: </label>
+				<input id="user_name"  type="text" th:field="*{username}" autofocus="autofocus" />
+				<span id="uname" class="Warning" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>				
+			</p>
+			<p>
+				<label for="first_name">First Name: </label>
+				<input id="first_name"  type="text" th:field="*{firstname}" autofocus="autofocus"/>
+				<span id="fname" class="Warning" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></span>				
+			</p>
+			<p>
+				<label for="last_name">Last Name: </label>
+				<input id="last_name"  type="text" th:field="*{lastname}" autofocus="autofocus"/>
+				<span id="lname" class="Warning" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></span>				
+			</p>
+			<p>
+				<label for="email">Email: </label>
+				<input id="email"  type="text" th:field="*{email}" autofocus="autofocus"/>
+				<span id="email" class="Warning" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>				
+			</p>
+			<p>
+				<label for="title">Title: </label>
+				<input id="title"  type="text" th:field="*{title}" />
+				<span id="title" class="Warning"></span>				
+			</p>
+			<p>
+				<label for="pass">Password: </label>
+				<input id="pass"  type="password" th:field="*{password}" autofocus="autofocus"/>
+				<span id="pass" class="Warning"  th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>				
+			</p>
+			<div>
+				<label for="userrole">User Role: </label>				
+				<select th:field="*{roleid}">
+			    <option th:each="role : ${roleMap}" th:value="${role.key}" th:text="${role.value}"></option>
+			    </select>			
+			</div>						
+			<div class="button-section">
+			<input type="submit" value="SAVE USER" />
+<!-- 			<span>Already have an account? <a th:href="@{/login}">Login here</a></span> -->
+			<hr>
+			<div style="text-align:right;"> 
+			<span><a class="cancel-button" th:href="@{/allusers}">CANCEL</a></span>
+			</div>
+			</div>
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>

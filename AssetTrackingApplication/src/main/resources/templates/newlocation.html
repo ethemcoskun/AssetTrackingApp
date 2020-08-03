@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Add new location</title>
+<link th:href="@{/CSS/style.css}" rel="stylesheet" />
+<link th:href="@{/CSS/formStyle.css}" rel="stylesheet" />
+</head>
+<body>
+
+
+	<div class="form-style">	
+		<div th:with="name=${this_site.site_name}">
+		<h1 th:text="${name}"><span>ADD NEW LOCATION</span></h1>
+		</div>	
+		<form th:action="@{/newlocation/{site_id}(site_id = ${this_site.site_id})}" th:object="${new_location}" method="post">
+			
+			<div class="section"><span>New Location</span> </div>
+			<div class="inner-wrap">
+			<p>
+				<label for="l_name">Location Name: </label> 
+				<input id="l_name" type="text" th:field="*{location_name}" />
+				<span id="lname" class="Warning" th:if="${#fields.hasErrors('location_name')}" th:errors="*{location_name}"></span>
+			</p>
+			<p>
+				<label for="l_desc">Location Description: </label> 
+				<input id="l_desc" type="text" th:field="*{location_description}" /><span id="ldesc" class="Warning"></span>
+			</p>			
+				<input id="l_siteid" type="hidden" th:value="${this_site.site_id}" th:attr="name='location_siteId'" />
+			<div class="button-section">
+			<input type="submit" value="Save" />
+			<hr>
+			<div style="text-align:right;"> 
+			<span><a class="cancel-button" th:href="@{/sitelocations/{site_id}(site_id=${this_site.site_id})}">CANCEL</a></span>
+			</div>
+			</div>
+			</div>
+		</form>
+		
+	</div>
+
+</body>
+</html>

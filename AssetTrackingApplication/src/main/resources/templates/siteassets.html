@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Locations</title>
+<link th:href="@{/CSS/style.css}" rel="stylesheet" />
+<link th:href="@{/CSS/main.css}" rel="stylesheet" />
+<script type="text/javascript" th:src="@{/JS/tablesort.js}"></script>
+</head>
+<body>
+
+<div class="container">
+	<div class="menu" tabindex="1">
+		<div class="list">
+			<span><a href="/allsites" class="button2">SITES</a></span>
+			<span><a href="/assets" class="button2">ASSETS</a></span>
+			<span><a href="/locations" class="button2">LOCATIONS</a></span>
+			<span><a href="/allcategories" class="button2">CATEGORIES</a></span>
+			<span><a href="/allvendors" class="button2">VENDORS</a></span>
+		</div>
+		<div class="intro">
+			<div class="btn"></div>
+			
+	<div class="center" style="width:70%;">
+		<h1 th:with="name=${this_site.site_name}">
+			ASSETS AT <span th:text="${name}"></span>:
+		</h1>
+		<div class="inner-wrap">
+			<table class="tableitems" style="width:1000px;" id="sortable_table">
+				<thead>
+					<tr>
+						<th onclick="sortTable(0, 'sortable_table')"><span>Asset Name</span></th>
+						<th>Asset Description</th>
+						<th onclick="sortTable(2, 'sortable_table')"><span>Asset Tag</span></th>
+						<th>PO Number</th>
+						<th onclick="sortNumericTable(4, 'sortable_table')"><span>Quantity</span></th>
+						<th onclick="sortTable(5, 'sortable_table')"><span>Purchase Date</span></th>
+						<th onclick="sortNumericTable(6, 'sortable_table')"><span>Purchase Cost</span></th>
+						<th onclick="sortTable(7, 'sortable_table')"><span>RecordDate</span></th>
+						<th>Salvage Value</th>
+						<th>Is Broken</th>
+						<th>Is Lost</th>
+						<th onclick="sortTable(11, 'sortable_table')"><span>Vendor</span></th>
+						<th onclick="sortTable(12, 'sortable_table')"><span>Category</span></th>
+						<th class="absorbing-column" onclick="sortTable(13, 'sortable_table')"><span>Location</span></th>
+						<th></th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<th:block th:each="asset : ${all_site_assets}">
+						<tr>
+							<td th:text="${asset.asset_name}"></td>
+							<td th:text="${asset.asset_description}"></td>
+							<td style="font-size: 16px;white-space:nowrap;" th:text="${asset.asset_tag}"></td>
+							<td th:text="${asset.po_number}"></td>
+							<td th:text="${asset.quantity}"></td>
+							<td style="font-size: 16px;white-space:nowrap;" th:text="${asset.purchase_date}"></td>
+							<td th:text="${asset.purchase_cost}"></td>
+							<td style="font-size: 16px;white-space:nowrap;" th:text="${asset.record_date}"></td>
+							<td th:text="${asset.salvage_value}"></td>
+							<td th:text="${asset.is_broken} ? 'YES' : 'NO'"></td>
+							<td th:text="${asset.is_lost} ? 'YES' : 'NO'"></td>
+							<td th:text="${vendors.get(asset.vendor_id)}"></td>
+							<td th:text="${categories.get(asset.category_id)}"></td>
+							<td><a th:href="@{/locationassets/{location_id}(location_id=${asset.location_id})}" ><span th:text="${locations.get(asset.location_id)}"></span></a></td>
+							<td><a class="button1" th:href="@{/getqrcode/{asset_id}(asset_id=${asset.asset_id})}">QR CODE</a></td>
+							<td><a class="button1" th:href="@{/updateasset/{asset_id}(asset_id=${asset.asset_id})}">EDIT</a></td>
+							<td><a class="button1" th:href="@{/deleteasset/(asset_id=${asset.asset_id})}">DELETE</a></td>
+						</tr>
+					</th:block>
+				</tbody>
+			</table>
+
+		</div>
+		<p>
+<!-- 			<a class="button1" th:href="@{/newasset/(site_id=${this_site.site_id})}">ADD NEW ASSET</a> -->
+			<a class="button1" th:href="@{/newasset/{site_id}(site_id=${this_site.site_id})}">ADD NEW ASSET</a>
+		</p>
+	</div>
+
+		</div>
+	</div>	
+</div>
+
+</body>
+</html>

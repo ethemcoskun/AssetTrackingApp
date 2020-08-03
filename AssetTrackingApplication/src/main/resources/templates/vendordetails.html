@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Vendors</title> 
+<link th:href="@{/CSS/style.css}" rel="stylesheet" />
+<link th:href="@{/CSS/formStyle.css}" rel="stylesheet" />
+</head>
+<body>
+ 
+		 
+		 
+	<div class="form-style">
+		
+		<th:block th:each="vendor : ${vendor_info}">		
+		<fieldset th:with="name=${vendor.vendor_name}"><h1 th:text="|VENDOR: ${name}|">VENDOR: </h1>
+		<div class="inner-wrap">
+ 
+		<div style="width: 400px; overflow: hidden; font-size: 20px;">
+			<div style="width: 178px; float: left;">
+				<ul>
+					<li class="highlight"><span>Vendor Name: </span></li>
+					<li style="height: 55px;" class="highlight"><span>Vendor Description: </span></li>
+					<li class="highlight"><span>Vendor Website: </span></li>
+					<li class="highlight"><span>Vendor Address: </span></li>
+				</ul> 
+			</div>
+			<div style="margin-left: 180px;" class="rightlist">
+				<ul>
+					<li><span th:text="|&zwnj;${vendor.vendor_name}|" ></span></li>
+					<li style="height: 55px;"><div class="scrollable" th:text="|&zwnj;${vendor.vendor_description}|"></div></li>
+					<li><span th:text="|&zwnj;${vendor.vendor_website}|"></span></li>
+					<li><span th:text="|&zwnj;${vendor.vendor_address}|"></span></li>				
+				</ul> 		
+			</div>		
+		</div>
+		
+		
+		</div> 
+		<div style="text-align:right;"> 
+		<span><a class="button1" th:href="@{/allvendors}">GO BACK</a></span>
+		</div>
+		</fieldset>	
+
+		<th:block> 	
+		
+		 
+		 
+		 
+	</div>	
+ 
+
+
+
+</body>
+</html>

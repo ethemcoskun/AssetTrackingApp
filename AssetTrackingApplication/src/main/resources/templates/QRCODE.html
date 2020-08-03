@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Asset QR CODE</title>
+<link th:href="@{/CSS/style.css}" rel="stylesheet" />
+<link th:href="@{/CSS/main.css}" rel="stylesheet" />
+<link th:href="@{/CSS/formStyle.css}" rel="stylesheet" />
+<script type="text/javascript" th:src="@{/JS/tablesort.js}"></script>
+</head>
+<body>
+
+	<div class="form-style" style="width: 600px;">
+ 
+		<div class="inner-wrap" >
+			<h1 th:text="|${asset.asset_tag}-${asset.asset_name}|"></h1>
+		 		<div style="width: 100%; overflow: hidden; font-size: 14px;">		
+				<div style="width: 200px; float: left;">
+					<ul>
+					<li><span class="highlight" th:text="|&zwnj;${asset.asset_name}|"></span></li>
+					<li><span class="highlight" th:text="|&zwnj;${asset.asset_description}|"></span></li>
+					<li><span class="highlight" th:text="|&zwnj;${asset.asset_tag}|"></span></li>
+					<li><span class="highlight" th:text="|&zwnj;${asset.po_number}|"></span></li>
+					<li><span class="highlight" th:text="|&zwnj;${asset.quantity}|"></span></li>
+					<li><span class="highlight" style="font-size: 14px; font-weight: bold;" th:text="|&zwnj;${asset.purchase_date}|"  ></span></li>
+					<li><span class="highlight" th:text="|&zwnj;${asset.purchase_cost}|"></span></li>
+					<li><span class="highlight" th:text="|&zwnj;${asset.salvage_value}|"></span></li>
+					<li><span class="highlight" th:text="${asset.is_broken} ? 'YES' : 'NO'"></span></li>
+					<li><span class="highlight" th:text="${asset.is_lost} ? 'YES' : 'NO'"></span></li>
+					<li><span class="highlight" th:text="|&zwnj;${vendorName}|"></span></li>
+					<li><span class="highlight" th:text="|&zwnj;${categoryName}|"></span></li>
+					<li><span class="highlight" th:text="|&zwnj;${locationName}|"></span></li>
+					<li><span class="highlight" th:text="|&zwnj;${siteName}|"></span></li>
+			        </ul>	 		 
+				</div> 
+				<div style="margin-left: 240px;" class="rightlist">
+					<div id="barcode">
+					<img th:src="|data:image/png;base64,${QR_CODE}|" id="photo-id"/>
+					</div>
+		        </div>
+		        </div>			
+		</div>
+ 
+
+        
+	</div>
+
+</body>
+</html>

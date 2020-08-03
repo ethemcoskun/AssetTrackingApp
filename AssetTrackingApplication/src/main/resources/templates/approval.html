@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Approve</title>
+<link th:href="@{/CSS/style.css}" rel="stylesheet" />
+<link th:href="@{/CSS/formStyle.css}" rel="stylesheet" />
+</head>
+<body>
+
+
+	<div class="form-style">
+		<div th:if="${message}">
+			<span th:text="${message}"></span>
+		</div>
+	
+	</div>
+
+</body>
+</html>

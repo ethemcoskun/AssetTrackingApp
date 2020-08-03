@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Locations</title>
+<link th:href="@{/CSS/style.css}" rel="stylesheet" />
+<link th:href="@{/CSS/main.css}" rel="stylesheet" />
+</head>
+<body>
+
+<div class="container">
+	<div class="menu" tabindex="1">
+		<div class="list">
+			<span><a href="/allsites" class="button2">SITES</a></span>
+			<span><a href="/assets" class="button2">ASSETS</a></span>
+			<span><a href="/locations" class="button2">LOCATIONS</a></span>
+			<span><a href="/allcategories" class="button2">CATEGORIES</a></span>
+			<span><a href="/allvendors" class="button2">VENDORS</a></span>
+		</div>
+		<div class="intro">
+			<div class="btn"></div>
+	
+	<div class="center">
+		<div class="inner-wrap">
+		<table class="tableitems" id="tbl">
+		<thead>
+			<tr>
+				<th>Site Name</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<th:block th:each="site : ${all_site_info}">
+				<tr>
+					<td th:text="${site.site_name}"></td>
+					<td><a class="button1" th:href="@{/siteassets/{site_id}(site_id=${site.site_id})}" >SHOW ASSETS</a></td>
+				</tr>
+			</th:block>
+		</tbody>
+		</table>
+
+	</div>
+			<div style="text-align:center;"> 
+			<span><a class="button3" th:href="@{/uploadExcelFile}">UPLOAD ASSETS FROM EXCEL FILE</a></span>
+			</div>
+	</div>
+
+
+		</div>
+	</div>	
+</div>
+
+
+
+
+</body>
+</html>

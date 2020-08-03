@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Edit asset</title>
+<link th:href="@{/CSS/style.css}" rel="stylesheet" />
+<link th:href="@{/CSS/formStyle.css}" rel="stylesheet" />
+</head>
+<body>
+
+
+	<div class="form-style">	
+		<h1 th:text="|UPDATE ASSET : ${this_asset.asset_name}|"></h1>
+		<a th:href="@{/siteassets/{site_id}(site_id=${this_site.site_id})}" ><label th:text="|Asset Location: ${this_site.site_name}|"></label></a>
+		
+		<form action="#" th:action="@{/updateasset/{asset_id}(asset_id=${this_asset.asset_id})}" th:object="${this_asset}" method="post">
+			<div class="section"><span>UPDATE</span> </div>
+			<p>&zwnj;</p>
+			<div class="inner-wrap">
+			<div>
+				<label for="a_name">Asset Name: </label>				
+				<input id="a_name"  type="text" th:field="*{asset_name}" />
+				<span class="Warning" th:if="${#fields.hasErrors('asset_name')}" th:errors="*{asset_name}">asset errors</span>
+			</div>		
+			<div>
+				<label for="a_desc">Asset Description: </label>
+				<input id="a_desc"  type="text" th:field="*{asset_description}" /><span id="adesc" class="Warning"></span>				
+			</div>
+			<div>
+				<label for="a_tag">Asset Tag: </label>
+				<input id="a_tag"  type="text" th:field="*{asset_tag}" />
+				<span class="Warning" th:if="${#fields.hasErrors('asset_tag')}" th:errors="*{asset_tag}">asset errors</span>				
+			</div>
+			<div>
+				<label for="a_ponum">PO Number: </label>
+				<input id="a_ponum" type="text" th:field="*{po_number}" /><span id="aponum" class="Warning"></span>				
+			</div>
+			<div>
+				<label for="a_quant">Quantity: </label>
+				<input id="a_quant"  type="text" th:field="*{quantity}" />
+				<span class="Warning" th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}">asset errors</span>				
+			</div>
+			<div>
+				<label for="a_pdate">Purchase Date: </label>
+				<input id="a_pdate"  type="date" th:field="*{purchase_date}" value="2020-01-08" min="2005-01-01" required/>
+				<span class="Warning" th:if="${#fields.hasErrors('purchase_date')}" th:errors="*{purchase_date}">asset errors</span>				
+			</div>
+			<div>
+				<label for="a_cost">Purchase Cost: </label>
+				<input id="a_cost"  type="text" th:field="*{purchase_cost}" /><span id="acost" class="Warning"></span>				
+			</div>
+			<div>
+				<label for="a_salval">Salvage Value: </label>
+				<input id="a_salval"  type="text" th:field="*{salvage_value}" /><span id="asalval" class="Warning"></span>				
+			</div>
+			<div>
+				<label for="a_lost">Is this asset lost: </label>
+				<select th:field="*{is_lost}">
+				<option th:value="0" th:text="NO"></option>
+				<option th:value="1" th:text="YES"></option>
+				</select>
+<!-- 				<input id="a_lost"  type="text" th:field="*{is_lost}" /><span id="alost" class="Warning"></span>				 -->
+			</div>
+			<div>
+				<label for="a_broken">Is this asset broken: </label>
+				<select th:field="*{is_broken}">
+				<option th:value="0" th:text="NO"></option>
+				<option th:value="1" th:text="YES"></option>
+				</select>
+<!-- 				<input id="a_broken"  type="text" th:field="*{is_broken}" /><span id="abroken" class="Warning"></span>				 -->
+			</div>
+			<div>
+				<label for="a_vendor">Vendor: </label>				
+				<select th:field="*{vendor_id}">
+			    <option th:each="vendor : ${vendorsMap}" th:value="${vendor.key}" th:text="${vendor.value}"></option>
+			    </select>			
+			</div>
+			<div>
+				<label for="a_cate">Category: </label>
+				<select th:field="*{category_id}">
+			    <option th:each="category : ${categoriesMap}" th:value="${category.key}" th:text="${category.value}"></option>
+			    </select>			
+			</div>
+			<div>
+				<label for="a_loc">Location: </label>
+				<select th:field="*{location_id}">
+			    <option th:each="location : ${all_locationsMap}" th:value="${location.key}" th:text="${location.value}"></option>
+			    </select>			
+			</div>
+				<input id="a_site"  type="hidden" th:value="${this_site.site_id}" th:attr="name='location_site_id'"/> 				
+			<div class="button-section">
+				<input type="submit" value="UPDATE ASSET" />
+			<hr>
+			<div style="text-align:right;"> 
+			<span><a class="cancel-button" th:href="@{/siteassets/{site_id}(site_id=${this_site.site_id})}">CANCEL</a></span>
+			</div>
+			</div>
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>

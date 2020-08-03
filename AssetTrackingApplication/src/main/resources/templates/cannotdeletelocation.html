@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Vendors</title>
+<link th:href="@{/CSS/style.css}" rel="stylesheet" />
+<link th:href="@{/CSS/main.css}" rel="stylesheet" />
+</head>
+<body>
+
+<div class="container">
+	<div class="menu" tabindex="1">
+		<div class="list">
+			<span><a href="/allsites" class="button2">SITES</a></span>
+			<span><a href="/assets" class="button2">ASSETS</a></span>
+			<span><a href="/locations" class="button2">LOCATIONS</a></span>
+			<span><a href="/allcategories" class="button2">CATEGORIES</a></span>
+			<span><a href="/allvendors" class="button2">VENDORS</a></span>
+		</div>
+		<div class="intro">
+			<div class="btn"></div>
+
+	<div th:with="loc=${this_location.location_name}, st=${this_site.site_name}">
+		<h1>LOCATION: <span th:text="${loc}"></span> AT SITE <span th:text="${st}"></span></h1>
+		<div style="text-align: left;font-size: 25px;">		
+		 <div>
+		 <p><span th:text="${name}"></span> is bound to some assets! There for, it cannot be deleted!</p> 
+		 </div>
+		 <div class="numberlist">
+		 <ul>		  
+		 <li>Location name: <span th:text="${this_location.location_name}"></span></li>
+		 <li>Location description: <span th:text="${this_location.location_description}"></span></li>
+		 <li>Location site: <span th:text="${this_site.site_name}"></span></li>
+		 </ul>
+		 </div>
+		</div>
+		<p>
+		<a th:href="@{/sitelocations/{site_id}(site_id=${this_site.site_id})}" class="button1">GO BACK</a>
+		</p>
+ 
+	</div>
+
+
+
+		</div>
+	</div>	
+</div>
+
+
+
+</body>
+</html>

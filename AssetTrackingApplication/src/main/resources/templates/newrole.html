@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Add new role</title>
+<link th:href="@{/CSS/style.css}" rel="stylesheet" />
+<link th:href="@{/CSS/formStyle.css}" rel="stylesheet" />
+</head>
+<body>
+
+
+	<div class="form-style">
+	<h1>Add New Role<span></span></h1>
+		<form th:action="@{/newrole}" th:object="${role}" method="post">
+			<div class="section"><span>NEW</span></div>
+			<div class="inner-wrap">
+			<div>
+				<label for="role_name">Role Name: </label>
+				<input id="role_name"  type="text" th:field="*{rolename}" required/>
+				<span id="rolename" class="Warning" th:if="${#fields.hasErrors('rolename')}" th:errors="*{rolename}"></span>				
+			</div>
+			
+            <div>
+               <label>Add Role Rights:</label>
+               <th:block th:each="appright : ${apprightMap}">
+               <div class="textboxarea">
+               <input type="checkbox" name="rights" th:value="${appright.key}" th:text="${appright.value}"/>
+               </div>
+               </th:block>
+             </div>			
+						
+			<div class="button-section">
+			<input type="submit" value="Save" />
+			<hr>
+			<div style="text-align:right;"> 
+			<span><a class="cancel-button" th:href="@{/allroles}">CANCEL</a></span>
+			</div>
+			</div>
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>

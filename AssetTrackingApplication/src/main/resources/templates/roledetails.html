@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Role Details</title> 
+<link th:href="@{/CSS/style.css}" rel="stylesheet" />
+<link th:href="@{/CSS/formStyle.css}" rel="stylesheet" />
+</head>
+<body>
+ 
+		 
+		 
+	<div class="form-style">
+		
+		<th:block th:each="role : ${role_info}">		
+		<fieldset th:with="name=${role.rolename}"><h1 th:text="|ROLE: ${name}|"></h1>
+		<div class="inner-wrap">
+		<label for="field1"><span class="highlight">Role Name: </span><span th:text="${role.rolename}"  ></span></label>  
+		 
+		<table id="tbl" class="tableitems">
+		<thead>
+			<tr>
+				<th>Right Description</th> 
+				<th>Right Code</th>
+			</tr>
+		</thead>
+		<tbody>
+ 			<th:block th:each="right : ${role_rights}">
+				<tr>
+					<td th:text="${right.right_description}"></td> 
+					<td th:text="${right.right_code}"></td>					
+				</tr>
+			</th:block>
+		</tbody>
+		</table>
+		 
+		</div> 
+		<div style="text-align:right;"> 
+		<span><a class="button1" th:href="@{/allroles}">GO BACK</a></span>
+		</div>
+		</fieldset>	
+
+		<th:block> 	
+		
+		 
+		 
+		 
+	</div>	
+ 
+
+
+
+</body>
+</html>

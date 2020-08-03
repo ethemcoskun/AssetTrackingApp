@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Roles</title>
+<link th:href="@{/CSS/style.css}" rel="stylesheet" />
+<link th:href="@{/CSS/main.css}" rel="stylesheet" />
+</head>
+<body>
+
+<div class="container">
+	<div class="menu" tabindex="1">
+		<div class="list">
+			<span><a href="/allsites" class="button2">SITES</a></span>
+			<span><a href="/assets" class="button2">ASSETS</a></span>
+			<span><a href="/locations" class="button2">LOCATIONS</a></span>
+			<span><a href="/allcategories" class="button2">CATEGORIES</a></span>
+			<span><a href="/allvendors" class="button2">VENDORS</a></span>
+		</div>
+		<div class="intro">
+			<div class="btn"></div>
+
+	<div class="center">
+		<h1>USER ROLES</h1>
+		<div class="inner-wrap">		
+		<table id="tbl" class="tableitems">
+		<thead>
+			<tr>
+				<th>Role Name</th> 
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<th:block th:each="role : ${all_role_info}">
+				<tr>
+					<td><a th:text="${role.rolename}" th:href="@{/roledetails/{roleid}(roleid=${role.roleid})}" ></a></td> 
+					<td><a class="button1" th:href="@{/deleterole/(roleid=${role.roleid})}" >Delete</a></td>					
+				</tr>
+			</th:block>
+		</tbody>
+		</table>
+
+		</div>
+		<p>
+		<a th:href="@{/newrole}" class="button1">ADD NEW ROLE</a>
+		</p>
+	</div>
+
+
+
+		</div>
+	</div>	
+</div>
+
+
+
+</body>
+</html>
